@@ -338,13 +338,7 @@ namespace Survive
                 MessageBox.Show("Je hebt niet genoeg eten.");
             }
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
+        
         private void button3_Click_1(object sender, EventArgs e)
         {
             if (Time >= 1 && Time <= 17)
@@ -378,6 +372,12 @@ namespace Survive
                         Hapiness += 10;
                         Energy += 10;
                         Time += 11;
+                        break;
+                    case 2:
+                        MessageBox.Show("Je hebt lekker geslapen. Blijdscap + 5. Emergie + 8);
+                        Hapiness += 5;
+                        Energy += 8;
+                        Time = 10;
                         break;
                 }
             }
