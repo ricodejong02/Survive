@@ -1,0 +1,9 @@
+c:\users\rico\documents\visual studio 2013\Projects\Survive\Survive\bin\Debug\Survive.exe.config
+c:\users\rico\documents\visual studio 2013\Projects\Survive\Survive\bin\Debug\Survive.exe
+c:\users\rico\documents\visual studio 2013\Projects\Survive\Survive\bin\Debug\Survive.pdb
+c:\users\rico\documents\visual studio 2013\Projects\Survive\Survive\obj\Debug\Survive.csprojResolveAssemblyReference.cache
+c:\users\rico\documents\visual studio 2013\Projects\Survive\Survive\obj\Debug\Survive.Form1.resources
+c:\users\rico\documents\visual studio 2013\Projects\Survive\Survive\obj\Debug\Survive.Properties.Resources.resources
+c:\users\rico\documents\visual studio 2013\Projects\Survive\Survive\obj\Debug\Survive.csproj.GenerateResource.Cache
+c:\users\rico\documents\visual studio 2013\Projects\Survive\Survive\obj\Debug\Survive.exe
+c:\users\rico\documents\visual studio 2013\Projects\Survive\Survive\obj\Debug\Survive.pdb
