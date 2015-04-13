@@ -399,13 +399,14 @@ namespace Survive
             switch (rd.next(2))
             {
                 case 0:
-                    MessageBox.Show("je voedsel is gestolen");
+                    MessageBox.Show("je voedsel is gestolen. Voedsel - 10. Blijdschap - 5.");
                     Food -= 10;
-                    braek;
+                    Hapiness -= 5;
+                    break;
                 case 1:
                     if (vrouw == false)
                     {
-                    MessageBox.Show("je hebt een vrouw gevonden!");
+                    MessageBox.Show("je hebt een vrouw gevonden! Blijdschap + 10");
                     Hapiness += 10;
                     Vrouw = true;
                     break;
@@ -413,7 +414,7 @@ namespace Survive
                 case 2:
                     if (Vrouw == true)
                     {
-                         MessageBox.Show("je vrouw heeft je verlaten je bent een sukkel")
+                         MessageBox.Show("je vrouw heeft je verlaten! je bent een sukkel. Blijdschap - 20. Voedsel - 10.")
                          Hapiness -= 20;
                          Vrouw = false;
                          Food -= 10;
@@ -421,10 +422,13 @@ namespace Survive
                     }
                 case 3:
                     break;
+                    
                 case 4:
                     break;
+                    
                 case 5:
                     break;
+                    
             }
         }
     }
