@@ -359,7 +359,7 @@ namespace Survive
 
             if (Time >= 18)
             {
-                switch (rd.Next(2))
+                switch (rd.Next(3))
                 {
                     case 0:
                         MessageBox.Show("Je hebt slecht geslapen! Blijdschap -10. Energie +3");
@@ -386,6 +386,12 @@ namespace Survive
         private void EnergyTimer_Tick(object sender, EventArgs e)
         {
             Energy -= 2;
+            if (Vrouw == true)
+            {
+                Energy -= 2;
+                Food -= 1;
+                Hapiness += 5;
+            }
         }
     }
 }
