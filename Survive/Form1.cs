@@ -13,6 +13,7 @@ namespace Survive
     public partial class Form1 : Form
     {
         decimal Time = 12;
+        bool Vrouw = false;
         int Days = 1;
         int Hunger = 15;
         int Food = 5;
@@ -34,6 +35,11 @@ namespace Survive
 
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
+        }
+        
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
@@ -338,7 +344,13 @@ namespace Survive
                 MessageBox.Show("Je hebt niet genoeg eten.");
             }
         }
-        
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
         private void button3_Click_1(object sender, EventArgs e)
         {
             if (Time >= 1 && Time <= 17)
@@ -359,7 +371,7 @@ namespace Survive
 
             if (Time >= 18)
             {
-                switch (rd.Next(3))
+                switch (rd.Next(2))
                 {
                     case 0:
                         MessageBox.Show("Je hebt slecht geslapen! Blijdschap -10. Energie +3");
@@ -373,12 +385,6 @@ namespace Survive
                         Energy += 10;
                         Time += 11;
                         break;
-                    case 2:
-                        MessageBox.Show("Je hebt lekker geslapen. Blijdscap + 5. Emergie + 8);
-                        Hapiness += 5;
-                        Energy += 8;
-                        Time = 10;
-                        break;
                 }
             }
         }
@@ -386,11 +392,39 @@ namespace Survive
         private void EnergyTimer_Tick(object sender, EventArgs e)
         {
             Energy -= 2;
-            if (Vrouw == true)
+        }
+        
+        private void RandomTimer_Tick(object sender, EventArgs e)
+        {
+            switch (rd.next(2))
             {
-                Energy -= 2;
-                Food -= 1;
-                Hapiness += 5;
+                case 0:
+                    MessageBox.Show("je voedsel is gestolen");
+                    Food -= 10;
+                    braek;
+                case 1:
+                    if (vrouw == false)
+                    {
+                    MessageBox.Show("je hebt een vrouw gevonden!");
+                    Hapiness += 10;
+                    Vrouw = true;
+                    break;
+                    }
+                case 2:
+                    if (Vrouw == true)
+                    {
+                         MessageBox.Show("je vrouw heeft je verlaten je bent een sukkel")
+                         Hapiness -= 20;
+                         Vrouw = false;
+                         Food -= 10;
+                         break;
+                    }
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
             }
         }
     }
