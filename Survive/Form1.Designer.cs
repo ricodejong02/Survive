@@ -50,6 +50,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.Dorst = new System.Windows.Forms.Label();
             this.EnergyTimer = new System.Windows.Forms.Timer(this.components);
+            this.RandomTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -237,8 +238,15 @@
             // 
             // EnergyTimer
             // 
+            this.EnergyTimer.Enabled = true;
             this.EnergyTimer.Interval = 15000;
             this.EnergyTimer.Tick += new System.EventHandler(this.EnergyTimer_Tick);
+            // 
+            // RandomTimer
+            // 
+            this.RandomTimer.Enabled = true;
+            this.RandomTimer.Interval = 60000;
+            this.RandomTimer.Tick += new System.EventHandler(this.RandomTimer_Tick);
             // 
             // Form1
             // 
@@ -292,6 +300,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label Dorst;
         private System.Windows.Forms.Timer EnergyTimer;
+        private System.Windows.Forms.Timer RandomTimer;
     }
 }
 
