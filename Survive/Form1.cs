@@ -353,7 +353,7 @@ namespace Survive
                     MessageBox.Show("Je hebt slecht geslapen! Blijdschap -10. Energie +6");
                     Hapiness -= 10;
                     Energy += 6;
-                    Time = 5;
+                    Time += 5;
                     Days += 1;
                 }
                 else if (dialogResult == DialogResult.No)
