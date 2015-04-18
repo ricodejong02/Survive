@@ -48,7 +48,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.Dorst = new System.Windows.Forms.Label();
+            this.DorstLabel = new System.Windows.Forms.Label();
             this.EnergyTimer = new System.Windows.Forms.Timer(this.components);
             this.RandomTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
@@ -168,7 +168,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(127, 77);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Zoek Eten";
+            this.button1.Text = "Verkennen";
             this.toolTip1.SetToolTip(this.button1, "-5 Energie tot -1 Energie\r\n. 0 Voedsel tot 7 Voedsel. -5 Blijdschap tot 5 Blijdsc" +
         "hap.\r\n\r\n");
             this.button1.UseVisualStyleBackColor = true;
@@ -183,7 +183,7 @@
             // Foodlabel
             // 
             this.Foodlabel.AutoSize = true;
-            this.Foodlabel.Location = new System.Drawing.Point(1168, 37);
+            this.Foodlabel.Location = new System.Drawing.Point(1200, 40);
             this.Foodlabel.Name = "Foodlabel";
             this.Foodlabel.Size = new System.Drawing.Size(12, 13);
             this.Foodlabel.TabIndex = 7;
@@ -210,7 +210,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(275, 593);
+            this.button3.Location = new System.Drawing.Point(527, 593);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(127, 77);
             this.button3.TabIndex = 6;
@@ -227,14 +227,14 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Slaap";
             // 
-            // Dorst
+            // DorstLabel
             // 
-            this.Dorst.AutoSize = true;
-            this.Dorst.Location = new System.Drawing.Point(1168, 60);
-            this.Dorst.Name = "Dorst";
-            this.Dorst.Size = new System.Drawing.Size(12, 13);
-            this.Dorst.TabIndex = 7;
-            this.Dorst.Text = "/";
+            this.DorstLabel.AutoSize = true;
+            this.DorstLabel.Location = new System.Drawing.Point(1200, 60);
+            this.DorstLabel.Name = "DorstLabel";
+            this.DorstLabel.Size = new System.Drawing.Size(12, 13);
+            this.DorstLabel.TabIndex = 7;
+            this.DorstLabel.Text = "/";
             // 
             // EnergyTimer
             // 
@@ -257,7 +257,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.Dorst);
+            this.Controls.Add(this.DorstLabel);
             this.Controls.Add(this.Foodlabel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.HygLabel);
@@ -298,7 +298,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label Dorst;
+        private System.Windows.Forms.Label DorstLabel;
         private System.Windows.Forms.Timer EnergyTimer;
         private System.Windows.Forms.Timer RandomTimer;
     }

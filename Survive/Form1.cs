@@ -12,17 +12,28 @@ namespace Survive
 {
     public partial class Form1 : Form
     {
-        decimal Time = 12;
-        bool Vrouw = false;
-        int Days = 1;
-        int Hunger = 15;
-        int Food = 5;
-        int Energy = 40;
-        int Hapiness = 50;
-        int Thirst = 50;
+        public decimal Time = 12;
+
+        public bool Vrouw = false;
+        public bool Axe = false;
+        public bool PickAxe = false;
+        public bool Bow = false;
+
+        public int Days = 1;
+        public int Hunger = 15;
+        public int Food = 5;
+        public int Energy = 40;
+        public int Hapiness = 50;
+        public int Thirst = 50;
+
+        public int Wood = 5;
+        public int Stone = 5;
+        public int Wool = 0;
+
         string Tijdstip = " 's middags";
         string DaysVar = "dag";
         string FoodVar = "stuks voedsel";
+
         Random rd = new Random();
 
         public Form1()
@@ -40,6 +51,7 @@ namespace Survive
 
         }
 
+        #region updater
         private void Updater_Tick(object sender, EventArgs e)
         {
             TimeLabel.Text = Time.ToString() + " Uur " + Tijdstip;
@@ -221,6 +233,7 @@ namespace Survive
                 Time = 24;
             }
 
+        #endregion
 
         }
 
@@ -244,83 +257,7 @@ namespace Survive
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            switch (rd.Next(5))
-            {
-                case 0:
-                    MessageBox.Show("Bezig met zoeken...");
-                    button1.Enabled = false;
-                    Clock.Enabled = false;
-                    Time += 1;
-                    Thread.Sleep(5000);
-                    Clock.Enabled = true;
-                    button1.Enabled = true;
-                    MessageBox.Show("Je hebt géén voedsel gevonden. Blijdschap -5.");
-                    Hapiness -= 5;
-                    Energy -= 2;
-                    break;
-                case 1:
-                    MessageBox.Show("Bezig met zoeken...");
-                    button1.Enabled = false;
-                    Clock.Enabled = false;
-                    Time += 1;
-                    Thread.Sleep(5000);
-                    Clock.Enabled = true;
-                    button1.Enabled = true;
-                    MessageBox.Show("Je hebt een klein beetje voedsel gevonden. Blijdschap -2. Voedsel + 1");
-                    Hapiness -= 2;
-                    Food += 1;
-                    Energy -= 2;
-                    break;
-                case 2:
-                    MessageBox.Show("Bezig met zoeken...");
-                    button1.Enabled = false;
-                    Clock.Enabled = false;
-                    Time += 1;
-                    Thread.Sleep(5000);
-                    Clock.Enabled = true;
-                    button1.Enabled = true;
-                    MessageBox.Show("Je hebt voedsel gevonden. Blijdschap + 1. Voedsel + 3.");
-                    Food += 3;
-                    Hapiness += 1;
-                    Energy -= 2;
-                    break;
-                case 3:
-                    MessageBox.Show("Bezig met zoeken...");
-                    button1.Enabled = false;
-                    Clock.Enabled = false;
-                    Time += 1;
-                    Thread.Sleep(5000);
-                    Clock.Enabled = true;
-                    button1.Enabled = true;
-                    MessageBox.Show("Je hebt  veel voedsel gevonden. Blijdschap + 3. Voedsel + 5.");
-                    Food += 5;
-                    Hapiness += 3;
-                    Energy -= 3;
-                    break;
-                case 4:
-                    MessageBox.Show("Bezig met zoeken...");
-                    button1.Enabled = false;
-                    Clock.Enabled = false;
-                    Time += 1;
-                    Thread.Sleep(5000);
-                    Clock.Enabled = true;
-                    button1.Enabled = true;
-                    DialogResult dialogResult = MessageBox.Show("Je hebt erg veel voedsel gevonden dit kost veel energie om mee te nemen.\r\nAls ja: Blijdschap + 5. Voedsel + 7. Energie -5.\r\nAls nee: Blijdschap -5. Voedsel + 0. Energie -1.", "Some Title", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        Food += 7;
-                        Energy -= 5;
-                        Hapiness += 5;
-                        break;
-                    }
-                    else if (dialogResult == DialogResult.No)
-                    {
-                        Energy -= 1;
-                        Hapiness -= 5;
-                        break;
-                    }
-                    break;
-            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -329,6 +266,8 @@ namespace Survive
             {
                 Food -= 1;
                 Hunger += 2;
+                Hapiness += 1;
+                Energy += 1;
             }
 
             else
@@ -337,11 +276,145 @@ namespace Survive
             }
         }
 
+        #region eten
         private void button3_Click(object sender, EventArgs e)
         {
+            switch (rd.Next(1))
+            {
+                case 0:
+                    if (Bow == false)
+                    {
+                        switch (rd.Next(5))
+                        {
+                            case 0:
+                                MessageBox.Show("Bezig met zoeken...");
+                                button1.Enabled = false;
+                                Clock.Enabled = false;
+                                Time += 1;
+                                Thread.Sleep(5000);
+                                Clock.Enabled = true;
+                                button1.Enabled = true;
+                                MessageBox.Show("Je hebt géén voedsel gevonden. Blijdschap -5.");
+                                Hapiness -= 5;
+                                Energy -= 2;
+                                break;
+                            case 1:
+                                MessageBox.Show("Bezig met zoeken...");
+                                button1.Enabled = false;
+                                Clock.Enabled = false;
+                                Time += 1;
+                                Thread.Sleep(5000);
+                                Clock.Enabled = true;
+                                button1.Enabled = true;
+                                MessageBox.Show("Je hebt een klein beetje voedsel gevonden. Blijdschap -2. Voedsel + 1");
+                                Hapiness -= 2;
+                                Food += 1;
+                                Energy -= 2;
+                                break;
+                            case 2:
+                                MessageBox.Show("Bezig met zoeken...");
+                                button1.Enabled = false;
+                                Clock.Enabled = false;
+                                Time += 1;
+                                Thread.Sleep(5000);
+                                Clock.Enabled = true;
+                                button1.Enabled = true;
+                                MessageBox.Show("Je hebt voedsel gevonden. Blijdschap + 1. Voedsel + 3.");
+                                Food += 3;
+                                Hapiness += 1;
+                                Energy -= 2;
+                                break;
+                            case 3:
+                                MessageBox.Show("Bezig met zoeken...");
+                                button1.Enabled = false;
+                                Clock.Enabled = false;
+                                Time += 1;
+                                Thread.Sleep(5000);
+                                Clock.Enabled = true;
+                                button1.Enabled = true;
+                                MessageBox.Show("Je hebt  veel voedsel gevonden. Blijdschap + 3. Voedsel + 5.");
+                                Food += 5;
+                                Hapiness += 3;
+                                Energy -= 3;
+                                break;
+                            case 4:
+                                MessageBox.Show("Bezig met zoeken...");
+                                button1.Enabled = false;
+                                Clock.Enabled = false;
+                                Time += 1;
+                                Thread.Sleep(5000);
+                                Clock.Enabled = true;
+                                button1.Enabled = true;
+                                DialogResult dialogResult = MessageBox.Show("Je hebt erg veel voedsel gevonden dit kost veel energie om mee te nemen.\r\nAls ja: Blijdschap + 5. Voedsel + 7. Energie -5.\r\nAls nee: Blijdschap -5. Voedsel + 0. Energie -1.", "Kies", MessageBoxButtons.YesNo);
 
+                                if (dialogResult == DialogResult.Yes)
+                                {
+                                    Food += 7;
+                                    Energy -= 5;
+                                    Hapiness += 5;
+                                    break;
+                                }
 
+                                else if (dialogResult == DialogResult.No)
+                                {
+                                    Energy -= 1;
+                                    Hapiness -= 5;
+                                    break;
+                                }
+                                break;
+                        }
+                    }
+
+                    if (Bow == true)
+                    {
+                        switch (rd.Next(3))
+                        {
+                            case 0:
+                                MessageBox.Show("Bezig met zoeken...");
+                                button1.Enabled = false;
+                                Clock.Enabled = false;
+                                Time += 1;
+                                Thread.Sleep(5000);
+                                Clock.Enabled = true;
+                                button1.Enabled = true;
+                                MessageBox.Show("Je hebt een konijn gedood. Blijdschap + 4. Voedsel + 3.");
+                                Food += 3;
+                                Energy -= 2;
+                                Hapiness += 4;
+                                break;
+                            case 1:
+                                MessageBox.Show("Bezig met zoeken...");
+                                button1.Enabled = false;
+                                Clock.Enabled = false;
+                                Time += 1;
+                                Thread.Sleep(5000);
+                                Clock.Enabled = true;
+                                button1.Enabled = true;
+                                MessageBox.Show("Je hebt een varken gedood. Blijdschap + 5. Voedsel + 4.");
+                                Food += 4;
+                                Energy -= 3;
+                                Hapiness += 5;
+                                break;
+                            case 2:
+                                MessageBox.Show("Bezig met zoeken...");
+                                button1.Enabled = false;
+                                Clock.Enabled = false;
+                                Time += 1;
+                                Thread.Sleep(5000);
+                                Clock.Enabled = true;
+                                button1.Enabled = true;
+                                MessageBox.Show("Je hebt een Koe gedood. Blijdschap + 6. Voedsel + 5.");
+                                Food += 5;
+                                Energy -= 4;
+                                Hapiness += 6;
+                                break;
+                        }
+                        break;
+                    }
+                    break;
+            }
         }
+        #endregion
 
         private void button3_Click_1(object sender, EventArgs e)
         {
@@ -350,11 +423,7 @@ namespace Survive
                 DialogResult dialogResult = MessageBox.Show("Overdag kan je niet goed slapen, toch doen?", "Zeker?", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    MessageBox.Show("Je hebt slecht geslapen! Blijdschap -10. Energie +6");
-                    Hapiness -= 10;
-                    Energy += 6;
-                    Time += 5;
-                    Days += 1;
+                    Slecht();
                 }
                 else if (dialogResult == DialogResult.No)
                 {
@@ -369,18 +438,10 @@ namespace Survive
                     switch (rd.Next(2))
                     {
                         case 0:
-                            MessageBox.Show("Je hebt een nachtmerrie gekregen. Blijdschap - 5. Energie + 3.");
-                            Hapiness -= 5;
-                            Energy += 3;
-                            Time = 5;
-                            Days += 1;
+                            Nachtmerrie();
                             break;
                         case 1:
-                            MessageBox.Show("Je hebt een super slecht geslapen. Blijdschap - 4. Energie + 5.");
-                            Hapiness -= 4;
-                            Energy += 5;
-                            Time = 6;
-                            Days += 1;
+                            Superslecht();
                             break;
                     }
                 }
@@ -390,25 +451,13 @@ namespace Survive
                     switch (rd.Next(3))
                     {
                         case 0:
-                            MessageBox.Show("Je hebt een nachtmerrie gekregen. Blijdschap - 5. Energie + 3.");
-                            Hapiness -= 5;
-                            Energy += 3;
-                            Time = 5;
-                            Days += 1;
+                            Nachtmerrie();
                             break;
                         case 1:
-                            MessageBox.Show("Je hebt een super slecht geslapen. Blijdschap - 4. Energie + 5.");
-                            Hapiness -= 4;
-                            Energy += 5;
-                            Time = 6;
-                            Days += 1;
+                            Superslecht();
                             break;
                         case 2:
-                            MessageBox.Show("Je hebt een slecht geslapen. Blijdschap - 3. Energie + 7.");
-                            Hapiness -= 3;
-                            Energy += 7;
-                            Time = 7;
-                            Days += 1;
+                            Slecht();
                             break;
                     }
                 }
@@ -418,31 +467,16 @@ namespace Survive
                     switch (rd.Next(4))
                     {
                         case 0:
-                            MessageBox.Show("Je hebt een slecht geslapen. Blijdschap - 3. Energie + 7.");
-                            Hapiness -= 3;
-                            Energy += 7;
-                            Time = 7;
-                            Days += 1;
+                            Slecht();
                             break;
                         case 1:
-                            MessageBox.Show("Je hebt geslapen. Energie + 12.");
-                            Energy += 15;
-                            Time = 8;
-                            Days += 1;
+                            Normaal();
                             break;
                         case 2:
-                            MessageBox.Show("Je hebt prima geslapen. Energie + 15. Blijdschap + 5");
-                            Hapiness += 5;
-                            Energy += 15;
-                            Time = 9;
-                            Days += 1;
+                            Prima();
                             break;
                         case 3:
-                            MessageBox.Show("Je hebt lekker geslapen. Energie + 17. Blijdschap + 7");
-                            Hapiness += 7;
-                            Energy += 19;
-                            Time = 10;
-                            Days += 1;
+                            Lekker();
                             break;
                     }
                 }
@@ -452,31 +486,16 @@ namespace Survive
                     switch (rd.Next(4))
                     {
                         case 0:
-                            MessageBox.Show("Je hebt geslapen. Energie + 12.");
-                            Energy += 15;
-                            Time = 8;
-                            Days += 1;
+                            Normaal();
                             break;
                         case 1:
-                            MessageBox.Show("Je hebt prima geslapen. Energie + 15. Blijdschap + 5");
-                            Hapiness += 5;
-                            Energy += 15;
-                            Time = 9;
-                            Days += 1;
+                            Prima();
                             break;
                         case 2:
-                            MessageBox.Show("Je hebt lekker geslapen. Energie + 17. Blijdschap + 7");
-                            Hapiness += 7;
-                            Energy += 17;
-                            Time = 10;
-                            Days += 1;
+                            Lekker();
                             break;
                         case 3:
-                            MessageBox.Show("Je hebt heerlijk geslapen. Energie + 19. Blijdschap + 10");
-                            Hapiness += 10;
-                            Energy += 19;
-                            Time = 11;
-                            Days += 1;
+                            Heerlijk();
                             break;
                     }
                 }
@@ -486,36 +505,20 @@ namespace Survive
                     switch (rd.Next(3))
                     {
                         case 0:
-                            MessageBox.Show("Je hebt prima geslapen. Energie + 15. Blijdschap + 5");
-                            Hapiness += 5;
-                            Energy += 15;
-                            Time = 9;
-                            Days += 1;
+                            Prima();
                             break;
                         case 1:
-                            MessageBox.Show("Je hebt lekker geslapen. Energie + 17. Blijdschap + 7");
-                            Hapiness += 7;
-                            Energy += 17;
-                            Time = 10;
-                            Days += 1;
+                            Lekker();
                             break;
                         case 2:
-                            MessageBox.Show("Je hebt heerlijk geslapen. Energie + 19. Blijdschap + 10");
-                            Hapiness += 10;
-                            Energy += 19;
-                            Time = 11;
-                            Days += 1;
+                            Heerlijk();
                             break;
                     }
                 }
 
                 if (Hapiness >= 101)
                 {
-                    MessageBox.Show("Je hebt heerlijk geslapen. Energie + 19. Blijdschap + 10");
-                    Hapiness += 10;
-                    Energy += 19;
-                    Time = 11;
-                    Days += 1;
+                    Heerlijk();
                 }
             }
         }
@@ -527,7 +530,7 @@ namespace Survive
             if (Vrouw == true)
             {
                 Energy -= 1;
-                Hapiness += 5;
+                Hapiness += 3;
 
                 if (Food <= 0)
                 {
@@ -535,7 +538,7 @@ namespace Survive
                     Hapiness -= 20;
                     Vrouw = false;
                 }
-                
+
                 if (Food >= 1)
                 {
                     Food -= 2;
@@ -549,42 +552,112 @@ namespace Survive
             {
 
                 case 0:
-                    MessageBox.Show("je voedsel is gestolen. Voedsel - 10. Blijdschap - 5.");
-                    Food -= 10;
-                    Hapiness -= 5;
+                    if (Food >= 10)
+                    {
+                        MessageBox.Show("je voedsel is gestolen. Voedsel - 10. Blijdschap - 5.");
+                        Food -= 10;
+                        Hapiness -= 5;
+                    }
                     break;
 
                 case 1:
                     if (Vrouw == false)
                     {
-                    MessageBox.Show("je hebt een vrouw gevonden! Blijdschap + 10");
-                    Hapiness += 10;
-                    Vrouw = true;
+                        MessageBox.Show("je hebt een vrouw gevonden! Blijdschap + 10");
+                        Hapiness += 10;
+                        Vrouw = true;
                     }
                     break;
 
                 case 2:
                     if (Vrouw == true)
                     {
-                         MessageBox.Show("je vrouw heeft je verlaten! je bent een sukkel. Blijdschap - 20. Voedsel - 10.");
-                         Hapiness -= 20;
-                         Vrouw = false;
-                         Food -= 10;
+                        MessageBox.Show("je vrouw heeft je verlaten! je bent een sukkel. Blijdschap - 20. Voedsel - 10.");
+                        Hapiness -= 20;
+                        Vrouw = false;
+                        Food -= 10;
                     }
                     break;
 
                 case 3:
                     break;
-                    
+
                 case 4:
                     break;
-                    
+
                 case 5:
                     break;
-                    
+
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void Nachtmerrie()
+        {
+            MessageBox.Show("Je hebt een super slecht geslapen. Blijdschap - 4. Energie + 5.");
+            Hapiness -= 4;
+            Energy += 5;
+            Time = 6;
+            Days += 1;
+        }
+
+        public void Superslecht()
+        {
+            MessageBox.Show("Je hebt een super slecht geslapen. Blijdschap - 4. Energie + 5.");
+            Hapiness -= 4;
+            Energy += 5;
+            Time = 6;
+            Days += 1;
+        }
+
+        public void Slecht()
+        {
+            MessageBox.Show("Je hebt slecht geslapen! Blijdschap -10. Energie +6");
+            Hapiness -= 10;
+            Energy += 6;
+            Time = 5;
+            Days += 1;
+        }
+
+        public void Normaal()
+        {
+            MessageBox.Show("Je hebt geslapen. Energie + 12.");
+            Energy += 15;
+            Time = 8;
+            Days += 1;
+        }
+
+        public void Prima()
+        {         
+            MessageBox.Show("Je hebt prima geslapen. Energie + 15. Blijdschap + 5");
+            Hapiness += 5;
+            Energy += 15;
+            Time = 9;
+            Days += 1;
+        }
+
+        public void Lekker()
+        {
+            MessageBox.Show("Je hebt lekker geslapen. Energie + 17. Blijdschap + 7");
+            Hapiness += 7;
+            Energy += 19;
+            Time = 10;
+            Days += 1;
+        }
+        public void Heerlijk()
+        {
+            MessageBox.Show("Je hebt heerlijk geslapen. Energie + 19. Blijdschap + 10");
+            Hapiness += 10;
+            Energy += 19;
+            Time = 11;
+            Days += 1;
         }
     }
 }
+
 
       
